@@ -1,0 +1,62 @@
+package Filter::Microsoft;
+
+$VERSION = '4.01';
+
+use Filter::Simple;
+
+FILTER_ONLY
+    quotelike => sub { s/\$!/Unknown error/g };
+
+1;
+__END__
+
+=head1 NAME
+
+Filter::Microsoft - User friendly error messages in Perl
+
+=head1 SYNOPSIS
+
+  use Filter::Microsoft;
+  open FH, $filename or die "Could not open $filename: $!";
+
+=head1 DESCRIPTION
+
+This module is a drop-in-replacement and can be used in existing scripts and
+modules. It makes $! user friendly, like in Microsoft software.
+
+$! usually contains technical descriptions like "No such file or directory" or
+"No space left on device". This is useful for developers, but users need error
+messages they understand.
+
+Microsoft understands users. You may have noticed how user friendly Microsoft
+software is. Because even Microsoft's software has bugs, the people in Redmond
+had to come up with simpler error messages.
+
+Filter::Microsoft brings those friendly error messages to Perl.
+
+=head1 CAVEATS
+
+User friendly messages are used only when $! is in quotelike operators. This
+allows you to send the real error message over the Internet without letting the
+user know.
+
+=head1 SEE ALSO
+
+RFC's: 527, 748, 1097, 1149, 1216, 1217, 1313, 1437, 1438, 1605, 1606, 1607,
+1925, 2100, 2321, 2322, 2323, 2324, 2325, 2549, 2550, 2551, 2795, 3091, 3092,
+3093 3251, 3252, 3514
+
+=head1 AUTHOR
+
+Juerd Waalboer <juerd@cpan.org> <http://juerd.nl/>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Juerd
+
+This library is not free software; you cannot redistribute it and/or modify it
+under the same terms as Perl itself. 
+
+Please read EULA.txt for the full text of the End User License Agreement.
+
+=cut
